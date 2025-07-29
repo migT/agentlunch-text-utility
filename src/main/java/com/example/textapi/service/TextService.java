@@ -1,10 +1,7 @@
 package com.example.textapi.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.example.textapi.utils.TextConversionUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -16,7 +13,6 @@ public class TextService {
     private static final String HELLO_WORLD = "Hello, World!";
     public static final String VOWEL_PATTERN = "(?i)[^aeiou]";
     public static final String STRING_EMPTY = "";
-    private final ObjectMapper objectMapper = new ObjectMapper();
     private static final String consonantPattern = "(?i)[^b-df-hj-np-tv-z]";
 
     public String reverse(String input) {
@@ -104,29 +100,15 @@ public class TextService {
         return input.split("(?i)\\b" + Pattern.quote(keyword) + "\\b", -1).length - 1;
     }
 
+    public String helloworld() {
+        return HELLO_WORLD;
+    }
+
     public String convertJsonToYaml(String json) {
-        try {
-            JsonNode jsonNode = getJsonNode(json);
-            return new YAMLMapper().writeValueAsString(jsonNode);
-        } catch (Exception e) {
-            return "Error converting JSON to YAML: " + e.getMessage();
-        }
+        return TextConversionUtil.convertJsonToYaml(json);
     }
 
     public String convertJsonToXml(String json) {
-        try {
-            JsonNode jsonNode = getJsonNode(json);
-            return new XmlMapper().writeValueAsString(jsonNode);
-        } catch (Exception e) {
-            return "Error converting JSON to XML: " + e.getMessage();
-        }
-    }
-
-    private JsonNode getJsonNode(String json) throws JsonProcessingException {
-        return objectMapper.readTree(json);
-    }
-
-    public String helloworld() {
-        return HELLO_WORLD;
+        return TextConversionUtil.convertJsonToXml(json);
     }
 }

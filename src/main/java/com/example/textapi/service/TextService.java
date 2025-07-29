@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import jdk.internal.joptsimple.internal.Strings;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -16,6 +15,7 @@ public class TextService {
 
     private static final String HELLO_WORLD = "Hello, World!";
     public static final String VOWEL_PATTERN = "(?i)[^aeiou]";
+    public static final String STRING_EMPTY = "";
     private final ObjectMapper objectMapper = new ObjectMapper();
     private static final String consonantPattern = "(?i)[^b-df-hj-np-tv-z]";
 
@@ -29,37 +29,59 @@ public class TextService {
 
     public Map<String, Object> stats(String input) {
         Map<String, Object> result = new HashMap<>();
-        result.put("length", input.length());
-        result.put("wordCount", input.split("\\s+").length);
-        result.put("lineCount", input.split("\\R").length);
+        result.put("length", getLength(input));
+        result.put("wordCount", getSplitCount(input, "\\s+"));
+        result.put("lineCount", getSplitCount(input, "\\n"));
         result.put("VowelCount", getVowelCount(input));
         result.put("ConsonantCount", getConsonantCount(input));
         result.put("RepeatedWords", getRepeatedWords(input));
         return result;
     }
 
-    private List<String> getRepeatedWords(String input) {
-        String[] words = input.split("\\s+");
-        Map<String, Integer> wordCountMap = new HashMap<>();
-        for (String word : words) {
-            word = word.toLowerCase();
-            wordCountMap.put(word, wordCountMap.getOrDefault(word, 0) + 1);
+    private Integer getLength(String input) {
+        if (input == null) {
+            return Integer.valueOf(0);
         }
-        List<String> repeatedWords = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
+        return Integer.valueOf(input.length());
+    }
+
+    private static Integer getSplitCount(String input, String splitRegex) {
+        int length = input.split(splitRegex).length;
+        return Integer.valueOf(length);
+    }
+
+    public List<String> getRepeatedWords(String input) {
+        if (input == null || input.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        Map<String, Integer> wordCount = new LinkedHashMap<>();
+        List<String> result = new ArrayList<>();
+
+        // Normalize input: lowercase and remove punctuation (except digits/letters)
+        String[] words = input.toLowerCase().replaceAll("[^a-z0-9\\s]", "").split("\\s+");
+
+        // Count word occurrences
+        for (String word : words) {
+            wordCount.put(word, Integer.valueOf(wordCount.getOrDefault(word, Integer.valueOf(0)) + 1));
+        }
+
+        // Collect only repeated words with their count
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
             if (entry.getValue() > 1) {
-                repeatedWords.add(entry.getKey());
+                result.add(entry.getKey() + " : " + entry.getValue());
             }
         }
-        return repeatedWords;
+
+        return result;
     }
 
-    private int getConsonantCount(String input) {
-        return input.replaceAll(consonantPattern, Strings.EMPTY).length();
+    private Integer getConsonantCount(String input) {
+        return Integer.valueOf(input.replaceAll(consonantPattern, STRING_EMPTY).length());
     }
 
-    private int getVowelCount(String input) {
-        return input.replaceAll(VOWEL_PATTERN, Strings.EMPTY).length();
+    private Integer getVowelCount(String input) {
+        return Integer.valueOf(input.replaceAll(VOWEL_PATTERN, STRING_EMPTY).length());
     }
 
     public String replace(String input, String target, String replacement) {

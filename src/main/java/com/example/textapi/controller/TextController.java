@@ -14,6 +14,11 @@ public class TextController {
     @Autowired
     private TextService textService;
 
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return textService.helloworld();
+    }
+
     @PostMapping("/reverse")
     public String reverse(@RequestBody String input) {
         return textService.reverse(input);
@@ -27,11 +32,6 @@ public class TextController {
     @PostMapping("/stats")
     public Map<String, Object> stats(@RequestBody String input) {
         return textService.stats(input);
-    }
-
-    @PostMapping("/camelcase")
-    public String camelCase(@RequestBody String input) {
-        return textService.toCamelCase(input);
     }
 
     @PostMapping("/replace")

@@ -1,18 +1,17 @@
 package com.example.textapi.controller;
 
 import com.example.textapi.service.TextService;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/text")
+@RequiredArgsConstructor
 public class TextController {
 
-    @Autowired
-    private TextService textService;
+    private final TextService textService;
 
     @GetMapping("/hello")
     public String helloWorld() {

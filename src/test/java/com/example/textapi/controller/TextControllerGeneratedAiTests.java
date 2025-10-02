@@ -1,0 +1,7360 @@
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Mock;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        Mockito.reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorldString() {
+        // GIVEN
+        String expected = "Hello, World!";
+        Mockito.when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abcdef";
+        String expected = "fedcba";
+        Mockito.when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "hello";
+        String expected = "HELLO";
+        Mockito.when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello World\nHello";
+        Map<String, Object> expected = new HashMap<>();
+        expected.put("length", 18);
+        expected.put("wordCount", 3);
+        expected.put("lineCount", 2);
+        expected.put("VowelCount", 5);
+        expected.put("ConsonantCount", 8);
+        expected.put("RepeatedWords", List.of("hello : 2"));
+        Mockito.when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "foo bar foo";
+        String target = "foo";
+        String replacement = "baz";
+        String expected = "baz bar baz";
+        Mockito.when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "Hello World";
+        String expected = "Hll Wrld";
+        Mockito.when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "Hello World";
+        String expected = "eoo";
+        Mockito.when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "apple banana apple orange apple";
+        String keyword = "apple";
+        int expected = 3;
+        Mockito.when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"name\":\"John\",\"age\":30}";
+        String expected = "name: \"John\"\nage: 30\n";
+        Mockito.when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"name\":\"John\",\"age\":30}";
+        String expected = "<ObjectNode><name>John</name><age>30</age></ObjectNode>";
+        Mockito.when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+
+/*
+2025-10-02 09:46:03.131 INFO [main] [io.github.adamw7.testing.generator.prompt.UnitTestingPromptProvider.getPromptMessages(UnitTestingPromptProvider.java:40)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for fixing unit tests issue...
+2025-10-02 09:46:03.146 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:46:03.147 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+There is an error in the previously generated test class.
+
+>> ERROR:
+
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile (default-testCompile) on project text-api: Compilation failure
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR]   symbol: class UNKNOWN
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+
+# TASK: Correct the error in the test class.
+
+# Instructions:
+1. Focus on the specific error given.
+2. Ensure that the corrected code passes and assertions are valid.
+3. Keep unrelated parts of the test unchanged.
+4. Follow existing project standards, including naming and formatting.
+
+2025-10-02 09:46:03.147 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:46:08.031 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 3485, outputTokenCount = 1011, totalTokenCount = 4496 }
+2025-10-02 09:46:08.032 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.033 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+2025-10-02 09:46:08.034 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:46:08.039 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.039 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+
+2025-10-02 09:48:59.294 INFO [main] [io.github.adamw7.testing.generator.prompt.ExceptionsHandlingPromptProvider.getPromptMessages(ExceptionsHandlingPromptProvider.java:37)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for exceptions handling in unit tests...
+2025-10-02 09:48:59.296 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:48:59.296 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+>> INPUT JAVA here you can find original code of CLASS:
+
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/text")
+@RequiredArgsConstructor
+public class TextController {
+
+    private final TextService textService;
+
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return textService.helloworld();
+    }
+
+    @PostMapping("/reverse")
+    public String reverse(@RequestBody String input) {
+        return textService.reverse(input);
+    }
+
+    @PostMapping("/uppercase")
+    public String uppercase(@RequestBody String input) {
+        return textService.uppercase(input);
+    }
+
+    @PostMapping("/stats")
+    public Map<String, Object> stats(@RequestBody String input) {
+        return textService.stats(input);
+    }
+
+    @PostMapping("/replace")
+    public String replace(@RequestParam String target, @RequestParam String replacement, @RequestBody String input) {
+        return textService.replace(input, target, replacement);
+    }
+
+    @PostMapping("/remove-vowels")
+    public String removeVowels(@RequestBody String input) {
+        return textService.removeVowels(input);
+    }
+
+    @PostMapping("/remove-consonants")
+    public String removeConsonants(@RequestBody String input) {
+        return textService.removeConsonants(input);
+    }
+
+    @PostMapping("/count-occurrence")
+    public int countOccurrence(@RequestParam String keyword, @RequestBody String input) {
+        return textService.countOccurrence(input, keyword);
+    }
+
+    @PostMapping(value = "/json-to-yaml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToYaml(@RequestBody String json) {
+        return textService.convertJsonToYaml(json);
+    }
+
+    @PostMapping(value = "/json-to-xml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToXml(@RequestBody String json) {
+        return textService.convertJsonToXml(json);
+    }
+}
+
+>> TASK: Below is the class with the originally generated tests. Please review the tests and check if exceptions are correctly handled. If methods in the original class can throw exceptions, ensure there are dedicated tests for those scenarios using assertThrows. Add or improve tests to cover exception handling, fix any related compilation errors, and suggest corrections to enhance quality. If there are logical errors in exception testing, address them.
+
+
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+
+/*
+2025-10-02 09:46:03.131 INFO [main] [io.github.adamw7.testing.generator.prompt.UnitTestingPromptProvider.getPromptMessages(UnitTestingPromptProvider.java:40)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for fixing unit tests issue...
+2025-10-02 09:46:03.146 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:46:03.147 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+There is an error in the previously generated test class.
+
+>> ERROR:
+
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile (default-testCompile) on project text-api: Compilation failure
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR]   symbol: class UNKNOWN
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+
+# TASK: Correct the error in the test class.
+
+# Instructions:
+1. Focus on the specific error given.
+2. Ensure that the corrected code passes and assertions are valid.
+3. Keep unrelated parts of the test unchanged.
+4. Follow existing project standards, including naming and formatting.
+
+2025-10-02 09:46:03.147 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:46:08.031 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 3485, outputTokenCount = 1011, totalTokenCount = 4496 }
+2025-10-02 09:46:08.032 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.033 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+2025-10-02 09:46:08.034 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:46:08.039 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.039 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+* /
+
+
+>> REQUIREMENTS:
+
+1. The response must contain fully functional test code.
+2. The response must be in plain text (no code block formatting like '''java ''').
+3. Place the generated tests in the SAME PACKAGE as the input JAVA class.
+4. Follow this naming convention for the test class: use the original class name and append "GeneratedAiTests".
+  - Do not add another "s" if the class name already ends with "s".
+  - Do not append "Tests" if the class name ends with "x", "ch", "sh", or "ss".
+    Example: `HelloAction` becomes `HelloActionGeneratedAiTests`.
+5. Use JUNIT5 for the test framework, MOCKITO for mocking, and ASSERTJ for assertions.
+6. Exclude `DisplayName` annotations.
+7. Include necessary imports for annotations like `@ExtendWith`.
+8. Ensure each test method has at least one assertion.
+9. Avoid generating tests for private methods—focus only on public and protected methods.
+10. Ensure any modified state in the test is reset before each test with a `@BeforeEach` method.
+11. Tests should be independent; no test should rely on the result of another.
+12. If no mocks are needed, skip importing mock-related libraries.
+13. Organize the test methods using the GIVEN WHEN THEN structure. Each test should begin with a GIVEN section that sets up the necessary preconditions or context, followed by a WHEN section that describes the action being tested, and concluding with a THEN section that specifies the expected outcome. Include comments for each section to clearly indicate their purpose.
+14. If error compilation refers to 'reference to assertThat is ambiguous' please do not use org.assertj.core.api.Assertions.assertThat, apart that please use assertEquals(expected, actual) from org.junit.jupiter.api.Assertions.assertEquals
+15. Please do not forget about necessary imports
+16. Check if the class name matches the requirements, e.g. classWithUnitTests instead of classWithUnitTest
+17. If a test fails, check it again to see if it's well written, is assertion correct
+
+# SECURITY REQUIREMENTS:
+1. Security Requirements are applicable to the all files, including those that are not security-sensitive
+2. If you encounter code that handles security-critical operations, mark it as security-sensitive in the generated code.
+3. Don't include any secrets, passwords, API keys, tokens, actual connection strings, authentication details, environment-specific configurations, sensitive configuration values, or personal and sensitive information in the generated code.
+
+2025-10-02 09:48:59.298 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:49:09.734 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 9546, outputTokenCount = 1697, totalTokenCount = 11243 }
+2025-10-02 09:49:09.735 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:49:09.735 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+2025-10-02 09:49:09.735 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:49:09.736 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:49:09.737 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import org.mockito.Mockito;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+
+2025-10-02 09:49:47.301 INFO [main] [io.github.adamw7.testing.generator.prompt.ExceptionsHandlingPromptProvider.getPromptMessages(ExceptionsHandlingPromptProvider.java:37)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for exceptions handling in unit tests...
+2025-10-02 09:49:47.302 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:49:47.302 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+>> INPUT JAVA here you can find original code of CLASS:
+
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/text")
+@RequiredArgsConstructor
+public class TextController {
+
+    private final TextService textService;
+
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return textService.helloworld();
+    }
+
+    @PostMapping("/reverse")
+    public String reverse(@RequestBody String input) {
+        return textService.reverse(input);
+    }
+
+    @PostMapping("/uppercase")
+    public String uppercase(@RequestBody String input) {
+        return textService.uppercase(input);
+    }
+
+    @PostMapping("/stats")
+    public Map<String, Object> stats(@RequestBody String input) {
+        return textService.stats(input);
+    }
+
+    @PostMapping("/replace")
+    public String replace(@RequestParam String target, @RequestParam String replacement, @RequestBody String input) {
+        return textService.replace(input, target, replacement);
+    }
+
+    @PostMapping("/remove-vowels")
+    public String removeVowels(@RequestBody String input) {
+        return textService.removeVowels(input);
+    }
+
+    @PostMapping("/remove-consonants")
+    public String removeConsonants(@RequestBody String input) {
+        return textService.removeConsonants(input);
+    }
+
+    @PostMapping("/count-occurrence")
+    public int countOccurrence(@RequestParam String keyword, @RequestBody String input) {
+        return textService.countOccurrence(input, keyword);
+    }
+
+    @PostMapping(value = "/json-to-yaml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToYaml(@RequestBody String json) {
+        return textService.convertJsonToYaml(json);
+    }
+
+    @PostMapping(value = "/json-to-xml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToXml(@RequestBody String json) {
+        return textService.convertJsonToXml(json);
+    }
+}
+
+>> TASK: Below is the class with the originally generated tests. Please review the tests and check if exceptions are correctly handled. If methods in the original class can throw exceptions, ensure there are dedicated tests for those scenarios using assertThrows. Add or improve tests to cover exception handling, fix any related compilation errors, and suggest corrections to enhance quality. If there are logical errors in exception testing, address them.
+
+
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import org.mockito.Mockito;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+
+
+>> REQUIREMENTS:
+
+1. The response must contain fully functional test code.
+2. The response must be in plain text (no code block formatting like '''java ''').
+3. Place the generated tests in the SAME PACKAGE as the input JAVA class.
+4. Follow this naming convention for the test class: use the original class name and append "GeneratedAiTests".
+  - Do not add another "s" if the class name already ends with "s".
+  - Do not append "Tests" if the class name ends with "x", "ch", "sh", or "ss".
+    Example: `HelloAction` becomes `HelloActionGeneratedAiTests`.
+5. Use JUNIT5 for the test framework, MOCKITO for mocking, and ASSERTJ for assertions.
+6. Exclude `DisplayName` annotations.
+7. Include necessary imports for annotations like `@ExtendWith`.
+8. Ensure each test method has at least one assertion.
+9. Avoid generating tests for private methods—focus only on public and protected methods.
+10. Ensure any modified state in the test is reset before each test with a `@BeforeEach` method.
+11. Tests should be independent; no test should rely on the result of another.
+12. If no mocks are needed, skip importing mock-related libraries.
+13. Organize the test methods using the GIVEN WHEN THEN structure. Each test should begin with a GIVEN section that sets up the necessary preconditions or context, followed by a WHEN section that describes the action being tested, and concluding with a THEN section that specifies the expected outcome. Include comments for each section to clearly indicate their purpose.
+14. If error compilation refers to 'reference to assertThat is ambiguous' please do not use org.assertj.core.api.Assertions.assertThat, apart that please use assertEquals(expected, actual) from org.junit.jupiter.api.Assertions.assertEquals
+15. Please do not forget about necessary imports
+16. Check if the class name matches the requirements, e.g. classWithUnitTests instead of classWithUnitTest
+17. If a test fails, check it again to see if it's well written, is assertion correct
+
+# SECURITY REQUIREMENTS:
+1. Security Requirements are applicable to the all files, including those that are not security-sensitive
+2. If you encounter code that handles security-critical operations, mark it as security-sensitive in the generated code.
+3. Don't include any secrets, passwords, API keys, tokens, actual connection strings, authentication details, environment-specific configurations, sensitive configuration values, or personal and sensitive information in the generated code.
+
+2025-10-02 09:49:47.303 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:49:56.612 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 14004, outputTokenCount = 1737, totalTokenCount = 15741 }
+2025-10-02 09:49:56.612 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:49:56.612 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+2025-10-02 09:49:56.612 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:49:56.613 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:49:56.613 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import org.mockito.Mockito;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+
+2025-10-02 09:50:39.292 INFO [main] [io.github.adamw7.testing.generator.prompt.ExceptionsHandlingPromptProvider.getPromptMessages(ExceptionsHandlingPromptProvider.java:37)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for exceptions handling in unit tests...
+2025-10-02 09:50:39.294 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:50:39.294 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+>> INPUT JAVA here you can find original code of CLASS:
+
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/text")
+@RequiredArgsConstructor
+public class TextController {
+
+    private final TextService textService;
+
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return textService.helloworld();
+    }
+
+    @PostMapping("/reverse")
+    public String reverse(@RequestBody String input) {
+        return textService.reverse(input);
+    }
+
+    @PostMapping("/uppercase")
+    public String uppercase(@RequestBody String input) {
+        return textService.uppercase(input);
+    }
+
+    @PostMapping("/stats")
+    public Map<String, Object> stats(@RequestBody String input) {
+        return textService.stats(input);
+    }
+
+    @PostMapping("/replace")
+    public String replace(@RequestParam String target, @RequestParam String replacement, @RequestBody String input) {
+        return textService.replace(input, target, replacement);
+    }
+
+    @PostMapping("/remove-vowels")
+    public String removeVowels(@RequestBody String input) {
+        return textService.removeVowels(input);
+    }
+
+    @PostMapping("/remove-consonants")
+    public String removeConsonants(@RequestBody String input) {
+        return textService.removeConsonants(input);
+    }
+
+    @PostMapping("/count-occurrence")
+    public int countOccurrence(@RequestParam String keyword, @RequestBody String input) {
+        return textService.countOccurrence(input, keyword);
+    }
+
+    @PostMapping(value = "/json-to-yaml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToYaml(@RequestBody String json) {
+        return textService.convertJsonToYaml(json);
+    }
+
+    @PostMapping(value = "/json-to-xml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToXml(@RequestBody String json) {
+        return textService.convertJsonToXml(json);
+    }
+}
+
+>> TASK: Below is the class with the originally generated tests. Please review the tests and check if exceptions are correctly handled. If methods in the original class can throw exceptions, ensure there are dedicated tests for those scenarios using assertThrows. Add or improve tests to cover exception handling, fix any related compilation errors, and suggest corrections to enhance quality. If there are logical errors in exception testing, address them.
+
+
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import org.mockito.Mockito;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+
+
+>> REQUIREMENTS:
+
+1. The response must contain fully functional test code.
+2. The response must be in plain text (no code block formatting like '''java ''').
+3. Place the generated tests in the SAME PACKAGE as the input JAVA class.
+4. Follow this naming convention for the test class: use the original class name and append "GeneratedAiTests".
+  - Do not add another "s" if the class name already ends with "s".
+  - Do not append "Tests" if the class name ends with "x", "ch", "sh", or "ss".
+    Example: `HelloAction` becomes `HelloActionGeneratedAiTests`.
+5. Use JUNIT5 for the test framework, MOCKITO for mocking, and ASSERTJ for assertions.
+6. Exclude `DisplayName` annotations.
+7. Include necessary imports for annotations like `@ExtendWith`.
+8. Ensure each test method has at least one assertion.
+9. Avoid generating tests for private methods—focus only on public and protected methods.
+10. Ensure any modified state in the test is reset before each test with a `@BeforeEach` method.
+11. Tests should be independent; no test should rely on the result of another.
+12. If no mocks are needed, skip importing mock-related libraries.
+13. Organize the test methods using the GIVEN WHEN THEN structure. Each test should begin with a GIVEN section that sets up the necessary preconditions or context, followed by a WHEN section that describes the action being tested, and concluding with a THEN section that specifies the expected outcome. Include comments for each section to clearly indicate their purpose.
+14. If error compilation refers to 'reference to assertThat is ambiguous' please do not use org.assertj.core.api.Assertions.assertThat, apart that please use assertEquals(expected, actual) from org.junit.jupiter.api.Assertions.assertEquals
+15. Please do not forget about necessary imports
+16. Check if the class name matches the requirements, e.g. classWithUnitTests instead of classWithUnitTest
+17. If a test fails, check it again to see if it's well written, is assertion correct
+
+# SECURITY REQUIREMENTS:
+1. Security Requirements are applicable to the all files, including those that are not security-sensitive
+2. If you encounter code that handles security-critical operations, mark it as security-sensitive in the generated code.
+3. Don't include any secrets, passwords, API keys, tokens, actual connection strings, authentication details, environment-specific configurations, sensitive configuration values, or personal and sensitive information in the generated code.
+
+2025-10-02 09:50:39.295 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:50:52.189 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 18502, outputTokenCount = 1737, totalTokenCount = 20239 }
+2025-10-02 09:50:52.189 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:50:52.190 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+2025-10-02 09:50:52.193 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:50:52.195 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:50:52.195 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import org.mockito.Mockito;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+
+2025-10-02 09:56:43.569 INFO [main] [io.github.adamw7.testing.generator.prompt.ImproveUnitTestsPromptProvider.getPromptMessages(ImproveUnitTestsPromptProvider.java:37)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for improving unit tests generation...
+2025-10-02 09:56:43.573 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:56:43.573 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+>> INPUT JAVA here you can find original code of CLASS:
+
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/text")
+@RequiredArgsConstructor
+public class TextController {
+
+    private final TextService textService;
+
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return textService.helloworld();
+    }
+
+    @PostMapping("/reverse")
+    public String reverse(@RequestBody String input) {
+        return textService.reverse(input);
+    }
+
+    @PostMapping("/uppercase")
+    public String uppercase(@RequestBody String input) {
+        return textService.uppercase(input);
+    }
+
+    @PostMapping("/stats")
+    public Map<String, Object> stats(@RequestBody String input) {
+        return textService.stats(input);
+    }
+
+    @PostMapping("/replace")
+    public String replace(@RequestParam String target, @RequestParam String replacement, @RequestBody String input) {
+        return textService.replace(input, target, replacement);
+    }
+
+    @PostMapping("/remove-vowels")
+    public String removeVowels(@RequestBody String input) {
+        return textService.removeVowels(input);
+    }
+
+    @PostMapping("/remove-consonants")
+    public String removeConsonants(@RequestBody String input) {
+        return textService.removeConsonants(input);
+    }
+
+    @PostMapping("/count-occurrence")
+    public int countOccurrence(@RequestParam String keyword, @RequestBody String input) {
+        return textService.countOccurrence(input, keyword);
+    }
+
+    @PostMapping(value = "/json-to-yaml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToYaml(@RequestBody String json) {
+        return textService.convertJsonToYaml(json);
+    }
+
+    @PostMapping(value = "/json-to-xml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToXml(@RequestBody String json) {
+        return textService.convertJsonToXml(json);
+    }
+}
+
+>> TASK: Below is the class with the originally generated tests, please review the following test class, fix any compilation error, improve the tests,
+ and suggest corrections that could enhance their quality. If there are any logical errors or issues with the tests themselves, please address them.
+
+
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+
+/*
+2025-10-02 09:46:03.131 INFO [main] [io.github.adamw7.testing.generator.prompt.UnitTestingPromptProvider.getPromptMessages(UnitTestingPromptProvider.java:40)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for fixing unit tests issue...
+2025-10-02 09:46:03.146 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:46:03.147 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+There is an error in the previously generated test class.
+
+>> ERROR:
+
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile (default-testCompile) on project text-api: Compilation failure
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR]   symbol: class UNKNOWN
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+
+# TASK: Correct the error in the test class.
+
+# Instructions:
+1. Focus on the specific error given.
+2. Ensure that the corrected code passes and assertions are valid.
+3. Keep unrelated parts of the test unchanged.
+4. Follow existing project standards, including naming and formatting.
+
+2025-10-02 09:46:03.147 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:46:08.031 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 3485, outputTokenCount = 1011, totalTokenCount = 4496 }
+2025-10-02 09:46:08.032 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.033 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+2025-10-02 09:46:08.034 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:46:08.039 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.039 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+* /
+
+
+>> REQUIREMENTS:
+
+1. The response must contain fully functional test code.
+2. The response must be in plain text (no code block formatting like '''java ''').
+3. Place the generated tests in the SAME PACKAGE as the input JAVA class.
+4. Follow this naming convention for the test class: use the original class name and append "GeneratedAiTests".
+  - Do not add another "s" if the class name already ends with "s".
+  - Do not append "Tests" if the class name ends with "x", "ch", "sh", or "ss".
+    Example: `HelloAction` becomes `HelloActionGeneratedAiTests`.
+5. Use JUNIT5 for the test framework, MOCKITO for mocking, and ASSERTJ for assertions.
+6. Exclude `DisplayName` annotations.
+7. Include necessary imports for annotations like `@ExtendWith`.
+8. Ensure each test method has at least one assertion.
+9. Avoid generating tests for private methods—focus only on public and protected methods.
+10. Ensure any modified state in the test is reset before each test with a `@BeforeEach` method.
+11. Tests should be independent; no test should rely on the result of another.
+12. If no mocks are needed, skip importing mock-related libraries.
+13. Organize the test methods using the GIVEN WHEN THEN structure. Each test should begin with a GIVEN section that sets up the necessary preconditions or context, followed by a WHEN section that describes the action being tested, and concluding with a THEN section that specifies the expected outcome. Include comments for each section to clearly indicate their purpose.
+14. If error compilation refers to 'reference to assertThat is ambiguous' please do not use org.assertj.core.api.Assertions.assertThat, apart that please use assertEquals(expected, actual) from org.junit.jupiter.api.Assertions.assertEquals
+15. Please do not forget about necessary imports
+16. Check if the class name matches the requirements, e.g. classWithUnitTests instead of classWithUnitTest
+17. If a test fails, check it again to see if it's well written, is assertion correct
+
+# SECURITY REQUIREMENTS:
+1. Security Requirements are applicable to the all files, including those that are not security-sensitive
+2. If you encounter code that handles security-critical operations, mark it as security-sensitive in the generated code.
+3. Don't include any secrets, passwords, API keys, tokens, actual connection strings, authentication details, environment-specific configurations, sensitive configuration values, or personal and sensitive information in the generated code.
+
+2025-10-02 09:56:43.574 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:56:51.790 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 25263, outputTokenCount = 1740, totalTokenCount = 27003 }
+2025-10-02 09:56:51.792 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:56:51.792 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+2025-10-02 09:56:51.793 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:56:51.795 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:56:51.795 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import org.mockito.Mockito;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+
+2025-10-02 09:57:31.506 INFO [main] [io.github.adamw7.testing.generator.prompt.ImproveUnitTestsPromptProvider.getPromptMessages(ImproveUnitTestsPromptProvider.java:37)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for improving unit tests generation...
+2025-10-02 09:57:31.508 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:57:31.508 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+>> INPUT JAVA here you can find original code of CLASS:
+
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/text")
+@RequiredArgsConstructor
+public class TextController {
+
+    private final TextService textService;
+
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return textService.helloworld();
+    }
+
+    @PostMapping("/reverse")
+    public String reverse(@RequestBody String input) {
+        return textService.reverse(input);
+    }
+
+    @PostMapping("/uppercase")
+    public String uppercase(@RequestBody String input) {
+        return textService.uppercase(input);
+    }
+
+    @PostMapping("/stats")
+    public Map<String, Object> stats(@RequestBody String input) {
+        return textService.stats(input);
+    }
+
+    @PostMapping("/replace")
+    public String replace(@RequestParam String target, @RequestParam String replacement, @RequestBody String input) {
+        return textService.replace(input, target, replacement);
+    }
+
+    @PostMapping("/remove-vowels")
+    public String removeVowels(@RequestBody String input) {
+        return textService.removeVowels(input);
+    }
+
+    @PostMapping("/remove-consonants")
+    public String removeConsonants(@RequestBody String input) {
+        return textService.removeConsonants(input);
+    }
+
+    @PostMapping("/count-occurrence")
+    public int countOccurrence(@RequestParam String keyword, @RequestBody String input) {
+        return textService.countOccurrence(input, keyword);
+    }
+
+    @PostMapping(value = "/json-to-yaml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToYaml(@RequestBody String json) {
+        return textService.convertJsonToYaml(json);
+    }
+
+    @PostMapping(value = "/json-to-xml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToXml(@RequestBody String json) {
+        return textService.convertJsonToXml(json);
+    }
+}
+
+>> TASK: Below is the class with the originally generated tests, please review the following test class, fix any compilation error, improve the tests,
+ and suggest corrections that could enhance their quality. If there are any logical errors or issues with the tests themselves, please address them.
+
+
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+
+/*
+2025-10-02 09:46:03.131 INFO [main] [io.github.adamw7.testing.generator.prompt.UnitTestingPromptProvider.getPromptMessages(UnitTestingPromptProvider.java:40)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for fixing unit tests issue...
+2025-10-02 09:46:03.146 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:46:03.147 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+There is an error in the previously generated test class.
+
+>> ERROR:
+
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile (default-testCompile) on project text-api: Compilation failure
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR]   symbol: class UNKNOWN
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+
+# TASK: Correct the error in the test class.
+
+# Instructions:
+1. Focus on the specific error given.
+2. Ensure that the corrected code passes and assertions are valid.
+3. Keep unrelated parts of the test unchanged.
+4. Follow existing project standards, including naming and formatting.
+
+2025-10-02 09:46:03.147 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:46:08.031 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 3485, outputTokenCount = 1011, totalTokenCount = 4496 }
+2025-10-02 09:46:08.032 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.033 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+2025-10-02 09:46:08.034 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:46:08.039 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.039 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+* /
+
+
+>> REQUIREMENTS:
+
+1. The response must contain fully functional test code.
+2. The response must be in plain text (no code block formatting like '''java ''').
+3. Place the generated tests in the SAME PACKAGE as the input JAVA class.
+4. Follow this naming convention for the test class: use the original class name and append "GeneratedAiTests".
+  - Do not add another "s" if the class name already ends with "s".
+  - Do not append "Tests" if the class name ends with "x", "ch", "sh", or "ss".
+    Example: `HelloAction` becomes `HelloActionGeneratedAiTests`.
+5. Use JUNIT5 for the test framework, MOCKITO for mocking, and ASSERTJ for assertions.
+6. Exclude `DisplayName` annotations.
+7. Include necessary imports for annotations like `@ExtendWith`.
+8. Ensure each test method has at least one assertion.
+9. Avoid generating tests for private methods—focus only on public and protected methods.
+10. Ensure any modified state in the test is reset before each test with a `@BeforeEach` method.
+11. Tests should be independent; no test should rely on the result of another.
+12. If no mocks are needed, skip importing mock-related libraries.
+13. Organize the test methods using the GIVEN WHEN THEN structure. Each test should begin with a GIVEN section that sets up the necessary preconditions or context, followed by a WHEN section that describes the action being tested, and concluding with a THEN section that specifies the expected outcome. Include comments for each section to clearly indicate their purpose.
+14. If error compilation refers to 'reference to assertThat is ambiguous' please do not use org.assertj.core.api.Assertions.assertThat, apart that please use assertEquals(expected, actual) from org.junit.jupiter.api.Assertions.assertEquals
+15. Please do not forget about necessary imports
+16. Check if the class name matches the requirements, e.g. classWithUnitTests instead of classWithUnitTest
+17. If a test fails, check it again to see if it's well written, is assertion correct
+
+# SECURITY REQUIREMENTS:
+1. Security Requirements are applicable to the all files, including those that are not security-sensitive
+2. If you encounter code that handles security-critical operations, mark it as security-sensitive in the generated code.
+3. Don't include any secrets, passwords, API keys, tokens, actual connection strings, authentication details, environment-specific configurations, sensitive configuration values, or personal and sensitive information in the generated code.
+
+2025-10-02 09:57:31.509 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:57:32.219 ERROR [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:49)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - AI ERROR - did not generate response
+java.lang.IllegalStateException: channel not registered to an event loop
+	at io.netty.channel.AbstractChannel.eventLoop(AbstractChannel.java:163)
+	at com.azure.core.http.netty.implementation.NettyUtility.closeConnection(NettyUtility.java:79)
+	at com.azure.core.http.netty.implementation.NettyAsyncHttpResponse.close(NettyAsyncHttpResponse.java:116)
+	at com.azure.core.http.policy.RetryPolicy.attemptSync(RetryPolicy.java:249)
+	at com.azure.core.http.policy.RetryPolicy.processSync(RetryPolicy.java:161)
+	at com.azure.core.http.HttpPipelineNextSyncPolicy.processSync(HttpPipelineNextSyncPolicy.java:53)
+	at com.azure.core.http.policy.AddHeadersPolicy.processSync(AddHeadersPolicy.java:66)
+	at com.azure.core.http.HttpPipelineNextSyncPolicy.processSync(HttpPipelineNextSyncPolicy.java:53)
+	at com.azure.core.http.policy.AddHeadersFromContextPolicy.processSync(AddHeadersFromContextPolicy.java:67)
+	at com.azure.core.http.HttpPipelineNextSyncPolicy.processSync(HttpPipelineNextSyncPolicy.java:53)
+	at com.azure.core.http.policy.RequestIdPolicy.processSync(RequestIdPolicy.java:77)
+	at com.azure.core.http.HttpPipelineNextSyncPolicy.processSync(HttpPipelineNextSyncPolicy.java:53)
+	at com.azure.core.http.policy.HttpPipelineSyncPolicy.processSync(HttpPipelineSyncPolicy.java:51)
+	at com.azure.core.http.policy.UserAgentPolicy.processSync(UserAgentPolicy.java:174)
+	at com.azure.core.http.HttpPipelineNextSyncPolicy.processSync(HttpPipelineNextSyncPolicy.java:53)
+	at com.azure.core.http.HttpPipeline.sendSync(HttpPipeline.java:138)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.send(SyncRestProxy.java:62)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.invoke(SyncRestProxy.java:83)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:124)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:95)
+	at jdk.proxy2/jdk.proxy2.$Proxy68.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1972)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:350)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:760)
+	at dev.langchain4j.model.azure.AzureOpenAiChatModel.lambda$doChat$0(AzureOpenAiChatModel.java:208)
+	at dev.langchain4j.internal.ExceptionMapper.withExceptionMapper(ExceptionMapper.java:29)
+	at dev.langchain4j.model.azure.AzureOpenAiChatModel.doChat(AzureOpenAiChatModel.java:207)
+	at dev.langchain4j.model.chat.ChatModel.chat(ChatModel.java:46)
+	at dev.langchain4j.model.chat.ChatModel.chat(ChatModel.java:92)
+	at io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:44)
+	at io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:121)
+	at io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:81)
+	at io.github.adamw7.orchestrator.generator.persistence.PersistingImprovementGenerator.create(PersistingImprovementGenerator.java:36)
+	at io.github.adamw7.orchestrator.generator.RetryImprovementGenerator.createInternal(RetryImprovementGenerator.java:80)
+	at io.github.adamw7.orchestrator.generator.RetryImprovementGenerator.createInternal(RetryImprovementGenerator.java:105)
+	at io.github.adamw7.orchestrator.generator.RetryImprovementGenerator.create(RetryImprovementGenerator.java:64)
+	at io.github.adamw7.testing.generator.persistence.CodeRevertingGenerator.create(CodeRevertingGenerator.java:43)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627)
+	at io.github.adamw7.testing.steps.ImproveGeneratedTestsStep.improveGeneratedUnitTests(ImproveGeneratedTestsStep.java:62)
+	at io.github.adamw7.testing.steps.ImproveGeneratedTestsStep.process(ImproveGeneratedTestsStep.java:41)
+	at io.github.adamw7.testing.steps.ProcessingPipeline.execute(ProcessingPipeline.java:17)
+	at io.github.adamw7.testing.engine.UnitTestingEngine.execute(UnitTestingEngine.java:73)
+	at io.github.adamw7.testing.cases.TestCase.execute(TestCase.java:21)
+	at io.github.adamw7.testing.services.OrchestrationClientFacadeImpl.execute(OrchestrationClientFacadeImpl.java:15)
+	at io.github.adamw7.testing.UnitTesting$1.run(UnitTesting.java:43)
+	at org.springframework.boot.SpringApplication.lambda$callRunner$5(SpringApplication.java:788)
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:796)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:787)
+	at org.springframework.boot.SpringApplication.lambda$callRunners$3(SpringApplication.java:772)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:772)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:325)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at io.github.adamw7.testing.UnitTesting.main(UnitTesting.java:31)
+2025-10-02 09:57:32.220 WARN [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:123)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Failed to generate code
+2025-10-02 09:57:32.220 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:57:32.220 WARN [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:85)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - No code to be used! Generated code is empty
+2025-10-02 09:58:18.575 INFO [main] [io.github.adamw7.testing.generator.prompt.ImproveUnitTestsPromptProvider.getPromptMessages(ImproveUnitTestsPromptProvider.java:37)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for improving unit tests generation...
+2025-10-02 09:58:18.575 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:58:18.576 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+>> INPUT JAVA here you can find original code of CLASS:
+
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/text")
+@RequiredArgsConstructor
+public class TextController {
+
+    private final TextService textService;
+
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return textService.helloworld();
+    }
+
+    @PostMapping("/reverse")
+    public String reverse(@RequestBody String input) {
+        return textService.reverse(input);
+    }
+
+    @PostMapping("/uppercase")
+    public String uppercase(@RequestBody String input) {
+        return textService.uppercase(input);
+    }
+
+    @PostMapping("/stats")
+    public Map<String, Object> stats(@RequestBody String input) {
+        return textService.stats(input);
+    }
+
+    @PostMapping("/replace")
+    public String replace(@RequestParam String target, @RequestParam String replacement, @RequestBody String input) {
+        return textService.replace(input, target, replacement);
+    }
+
+    @PostMapping("/remove-vowels")
+    public String removeVowels(@RequestBody String input) {
+        return textService.removeVowels(input);
+    }
+
+    @PostMapping("/remove-consonants")
+    public String removeConsonants(@RequestBody String input) {
+        return textService.removeConsonants(input);
+    }
+
+    @PostMapping("/count-occurrence")
+    public int countOccurrence(@RequestParam String keyword, @RequestBody String input) {
+        return textService.countOccurrence(input, keyword);
+    }
+
+    @PostMapping(value = "/json-to-yaml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToYaml(@RequestBody String json) {
+        return textService.convertJsonToYaml(json);
+    }
+
+    @PostMapping(value = "/json-to-xml", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String jsonToXml(@RequestBody String json) {
+        return textService.convertJsonToXml(json);
+    }
+}
+
+>> TASK: Below is the class with the originally generated tests, please review the following test class, fix any compilation error, improve the tests,
+ and suggest corrections that could enhance their quality. If there are any logical errors or issues with the tests themselves, please address them.
+
+
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+
+/*
+2025-10-02 09:46:03.131 INFO [main] [io.github.adamw7.testing.generator.prompt.UnitTestingPromptProvider.getPromptMessages(UnitTestingPromptProvider.java:40)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for fixing unit tests issue...
+2025-10-02 09:46:03.146 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 09:46:03.147 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+There is an error in the previously generated test class.
+
+>> ERROR:
+
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile (default-testCompile) on project text-api: Compilation failure
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-8475101990916824302/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[17,15] cannot find symbol
+[ERROR]   symbol: class UNKNOWN
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+
+# TASK: Correct the error in the test class.
+
+# Instructions:
+1. Focus on the specific error given.
+2. Ensure that the corrected code passes and assertions are valid.
+3. Keep unrelated parts of the test unchanged.
+4. Follow existing project standards, including naming and formatting.
+
+2025-10-02 09:46:03.147 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:46:08.031 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 3485, outputTokenCount = 1011, totalTokenCount = 4496 }
+2025-10-02 09:46:08.032 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.033 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+2025-10-02 09:46:08.034 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:46:08.039 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:46:08.039 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", java.util.Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+* /
+
+
+>> REQUIREMENTS:
+
+1. The response must contain fully functional test code.
+2. The response must be in plain text (no code block formatting like '''java ''').
+3. Place the generated tests in the SAME PACKAGE as the input JAVA class.
+4. Follow this naming convention for the test class: use the original class name and append "GeneratedAiTests".
+  - Do not add another "s" if the class name already ends with "s".
+  - Do not append "Tests" if the class name ends with "x", "ch", "sh", or "ss".
+    Example: `HelloAction` becomes `HelloActionGeneratedAiTests`.
+5. Use JUNIT5 for the test framework, MOCKITO for mocking, and ASSERTJ for assertions.
+6. Exclude `DisplayName` annotations.
+7. Include necessary imports for annotations like `@ExtendWith`.
+8. Ensure each test method has at least one assertion.
+9. Avoid generating tests for private methods—focus only on public and protected methods.
+10. Ensure any modified state in the test is reset before each test with a `@BeforeEach` method.
+11. Tests should be independent; no test should rely on the result of another.
+12. If no mocks are needed, skip importing mock-related libraries.
+13. Organize the test methods using the GIVEN WHEN THEN structure. Each test should begin with a GIVEN section that sets up the necessary preconditions or context, followed by a WHEN section that describes the action being tested, and concluding with a THEN section that specifies the expected outcome. Include comments for each section to clearly indicate their purpose.
+14. If error compilation refers to 'reference to assertThat is ambiguous' please do not use org.assertj.core.api.Assertions.assertThat, apart that please use assertEquals(expected, actual) from org.junit.jupiter.api.Assertions.assertEquals
+15. Please do not forget about necessary imports
+16. Check if the class name matches the requirements, e.g. classWithUnitTests instead of classWithUnitTest
+17. If a test fails, check it again to see if it's well written, is assertion correct
+
+# SECURITY REQUIREMENTS:
+1. Security Requirements are applicable to the all files, including those that are not security-sensitive
+2. If you encounter code that handles security-critical operations, mark it as security-sensitive in the generated code.
+3. Don't include any secrets, passwords, API keys, tokens, actual connection strings, authentication details, environment-specific configurations, sensitive configuration values, or personal and sensitive information in the generated code.
+
+2025-10-02 09:58:18.576 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 09:58:27.313 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 37048, outputTokenCount = 1730, totalTokenCount = 38778 }
+2025-10-02 09:58:27.313 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:58:27.313 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+2025-10-02 09:58:27.316 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 09:58:27.318 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 09:58:27.318 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import org.mockito.Mockito;
+import com.example.textapi.service.TextService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Map;
+import java.util.Collections;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorld() {
+        // GIVEN
+        String expected = "Hello, World!";
+        when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "cba";
+        when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReverse_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.reverse(input)).thenThrow(new RuntimeException("Service error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.reverse(input));
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "abc";
+        String expected = "ABC";
+        when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testUppercase_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "abc";
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Invalid"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello world";
+        Map<String, Object> expected = Map.of(
+                "length", 11,
+                "wordCount", 2,
+                "lineCount", 1,
+                "VowelCount", 3,
+                "ConsonantCount", 7,
+                "RepeatedWords", Collections.emptyList()
+        );
+        when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testStats_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "Hello world";
+        when(textService.stats(input)).thenThrow(new NullPointerException("Null"));
+
+        // WHEN & THEN
+        assertThrows(NullPointerException.class, () -> textController.stats(input));
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        String expected = "hello java";
+        when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testReplace_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world";
+        String target = "world";
+        String replacement = "java";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalStateException("Replace error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalStateException.class, () -> textController.replace(target, replacement, input));
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "hello";
+        String expected = "hll";
+        when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveVowels_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeVowels(input)).thenThrow(new RuntimeException("Vowel error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeVowels(input));
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "hello";
+        String expected = "eo";
+        when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testRemoveConsonants_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello";
+        when(textService.removeConsonants(input)).thenThrow(new RuntimeException("Consonant error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.removeConsonants(input));
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        int expected = 2;
+        when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testCountOccurrence_throwsException_whenServiceThrows() {
+        // GIVEN
+        String input = "hello world hello";
+        String keyword = "hello";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Keyword error"));
+
+        // WHEN & THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "key: \"value\"\n";
+        when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToYaml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToYaml(json)).thenThrow(new RuntimeException("Yaml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToYaml(json));
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        String expected = "<ObjectNode><key>value</key></ObjectNode>";
+        when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    void testJsonToXml_throwsException_whenServiceThrows() {
+        // GIVEN
+        String json = "{\"key\":\"value\"}";
+        when(textService.convertJsonToXml(json)).thenThrow(new RuntimeException("Xml error"));
+
+        // WHEN & THEN
+        assertThrows(RuntimeException.class, () -> textController.jsonToXml(json));
+    }
+}
+
+2025-10-02 10:21:28.740 INFO [main] [io.github.adamw7.testing.generator.prompt.UnitTestingPromptProvider.getPromptMessages(UnitTestingPromptProvider.java:40)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Building a prompt for fixing unit tests issue...
+2025-10-02 10:21:28.748 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:64)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generating code...
+2025-10-02 10:21:28.748 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.printPromptMessages(CodeGenerator.java:115)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Using prompt:
+
+There is an error in the previously generated test class.
+
+>> ERROR:
+
+[ERROR] COMPILATION ERROR : 
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-18113257010265104471/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[14,15] cannot find symbol
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:testCompile (default-testCompile) on project text-api: Compilation failure
+[ERROR] /C:/Users/JOSCAMAC/AppData/Local/Temp/codeai-test-18113257010265104471/src/test/java/com/example/textapi/controller/TextControllerGeneratedAiTests.java:[14,15] cannot find symbol
+[ERROR]   symbol: class UNKNOWN
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+
+# TASK: Correct the error in the test class.
+
+# Instructions:
+1. Focus on the specific error given.
+2. Ensure that the corrected code passes and assertions are valid.
+3. Keep unrelated parts of the test unchanged.
+4. Follow existing project standards, including naming and formatting.
+
+2025-10-02 10:21:28.749 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.generateTillEnd(CodeGenerator.java:119)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generate code iteration # 1
+2025-10-02 10:21:35.138 DEBUG [main] [io.github.adamw7.orchestrator.ai.langchain.LangChainAiService.generate(LangChainAiService.java:45)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - TokenUsage { inputTokenCount = 3511, outputTokenCount = 1046, totalTokenCount = 4557 }
+2025-10-02 10:21:35.139 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:82)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 10:21:35.139 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:88)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Generated code:
+package com.example.textapi.controller;
+
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Mock;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        Mockito.reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorldString() {
+        // GIVEN
+        String expected = "Hello, World!";
+        Mockito.when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abcdef";
+        String expected = "fedcba";
+        Mockito.when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "hello";
+        String expected = "HELLO";
+        Mockito.when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello World\nHello";
+        Map<String, Object> expected = new HashMap<>();
+        expected.put("length", 18);
+        expected.put("wordCount", 3);
+        expected.put("lineCount", 2);
+        expected.put("VowelCount", 5);
+        expected.put("ConsonantCount", 8);
+        expected.put("RepeatedWords", List.of("hello : 2"));
+        Mockito.when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "foo bar foo";
+        String target = "foo";
+        String replacement = "baz";
+        String expected = "baz bar baz";
+        Mockito.when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "Hello World";
+        String expected = "Hll Wrld";
+        Mockito.when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "Hello World";
+        String expected = "eoo";
+        Mockito.when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "apple banana apple orange apple";
+        String keyword = "apple";
+        int expected = 3;
+        Mockito.when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"name\":\"John\",\"age\":30}";
+        String expected = "name: \"John\"\nage: 30\n";
+        Mockito.when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"name\":\"John\",\"age\":30}";
+        String expected = "<ObjectNode><name>John</name><age>30</age></ObjectNode>";
+        Mockito.when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+2025-10-02 10:21:35.140 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:89)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refining code...
+2025-10-02 10:21:35.141 INFO [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:91)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Done
+2025-10-02 10:21:35.143 DEBUG [main] [io.github.adamw7.orchestrator.generator.CodeGenerator.create(CodeGenerator.java:92)] [{conversationName=com.example.textapi.controller.TextControllerGeneratedAiTests.java}] - Refined generated code:
+package com.example.textapi.controller;
+
+import static org.mockito.Mockito.mock;
+import com.example.textapi.service.TextService;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.mockito.Mock;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class TextControllerGeneratedAiTests {
+
+    @Mock
+    private TextService textService;
+
+    @InjectMocks
+    private TextController textController;
+
+    @BeforeEach
+    void setUp() {
+        Mockito.reset(textService);
+    }
+
+    @Test
+    void testHelloWorld_returnsHelloWorldString() {
+        // GIVEN
+        String expected = "Hello, World!";
+        Mockito.when(textService.helloworld()).thenReturn(expected);
+
+        // WHEN
+        String result = textController.helloWorld();
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReverse_returnsReversedString() {
+        // GIVEN
+        String input = "abcdef";
+        String expected = "fedcba";
+        Mockito.when(textService.reverse(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.reverse(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testUppercase_returnsUppercaseString() {
+        // GIVEN
+        String input = "hello";
+        String expected = "HELLO";
+        Mockito.when(textService.uppercase(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.uppercase(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testStats_returnsStatsMap() {
+        // GIVEN
+        String input = "Hello World\nHello";
+        Map<String, Object> expected = new HashMap<>();
+        expected.put("length", 18);
+        expected.put("wordCount", 3);
+        expected.put("lineCount", 2);
+        expected.put("VowelCount", 5);
+        expected.put("ConsonantCount", 8);
+        expected.put("RepeatedWords", List.of("hello : 2"));
+        Mockito.when(textService.stats(input)).thenReturn(expected);
+
+        // WHEN
+        Map<String, Object> result = textController.stats(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testReplace_returnsReplacedString() {
+        // GIVEN
+        String input = "foo bar foo";
+        String target = "foo";
+        String replacement = "baz";
+        String expected = "baz bar baz";
+        Mockito.when(textService.replace(input, target, replacement)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.replace(target, replacement, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveVowels_returnsStringWithoutVowels() {
+        // GIVEN
+        String input = "Hello World";
+        String expected = "Hll Wrld";
+        Mockito.when(textService.removeVowels(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeVowels(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testRemoveConsonants_returnsStringWithoutConsonants() {
+        // GIVEN
+        String input = "Hello World";
+        String expected = "eoo";
+        Mockito.when(textService.removeConsonants(input)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.removeConsonants(input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testCountOccurrence_returnsCorrectCount() {
+        // GIVEN
+        String input = "apple banana apple orange apple";
+        String keyword = "apple";
+        int expected = 3;
+        Mockito.when(textService.countOccurrence(input, keyword)).thenReturn(expected);
+
+        // WHEN
+        int result = textController.countOccurrence(keyword, input);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToYaml_returnsYamlString() {
+        // GIVEN
+        String json = "{\"name\":\"John\",\"age\":30}";
+        String expected = "name: \"John\"\nage: 30\n";
+        Mockito.when(textService.convertJsonToYaml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToYaml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void testJsonToXml_returnsXmlString() {
+        // GIVEN
+        String json = "{\"name\":\"John\",\"age\":30}";
+        String expected = "<ObjectNode><name>John</name><age>30</age></ObjectNode>";
+        Mockito.when(textService.convertJsonToXml(json)).thenReturn(expected);
+
+        // WHEN
+        String result = textController.jsonToXml(json);
+
+        // THEN
+        assertEquals(expected, result);
+    }
+}
+*/

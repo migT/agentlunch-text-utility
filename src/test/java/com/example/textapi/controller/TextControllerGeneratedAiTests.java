@@ -2,26 +2,28 @@ package com.example.textapi.controller;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.extension.ExtendWith;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeAll;
 
 import static org.mockito.Mockito.mock;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import com.example.textapi.service.TextService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class TextControllerGeneratedAiTests {
 
     private TextService textService;
@@ -64,6 +66,17 @@ class TextControllerGeneratedAiTests {
     }
 
     @Test
+    void reverse_ShouldThrowException_WhenInputIsNull() {
+        // GIVEN
+        String input = null;
+        when(textService.reverse(input)).thenThrow(new IllegalArgumentException("Input cannot be null"));
+
+        // WHEN / THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.reverse(input));
+        verify(textService, times(1)).reverse(input);
+    }
+
+    @Test
     void uppercase_ShouldReturnUppercaseString() {
         // GIVEN
         String input = "abc";
@@ -76,6 +89,17 @@ class TextControllerGeneratedAiTests {
         // THEN
         assertNotNull(result);
         assertEquals(upper, result);
+        verify(textService, times(1)).uppercase(input);
+    }
+
+    @Test
+    void uppercase_ShouldThrowException_WhenInputIsNull() {
+        // GIVEN
+        String input = null;
+        when(textService.uppercase(input)).thenThrow(new IllegalArgumentException("Input cannot be null"));
+
+        // WHEN / THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.uppercase(input));
         verify(textService, times(1)).uppercase(input);
     }
 
@@ -117,6 +141,19 @@ class TextControllerGeneratedAiTests {
         // THEN
         assertNotNull(result);
         assertEquals(replaced, result);
+        verify(textService, times(1)).replace(input, target, replacement);
+    }
+
+    @Test
+    void replace_ShouldThrowException_WhenInputIsNull() {
+        // GIVEN
+        String input = null;
+        String target = "a";
+        String replacement = "b";
+        when(textService.replace(input, target, replacement)).thenThrow(new IllegalArgumentException("Input cannot be null"));
+
+        // WHEN / THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.replace(target, replacement, input));
         verify(textService, times(1)).replace(input, target, replacement);
     }
 
@@ -169,6 +206,18 @@ class TextControllerGeneratedAiTests {
     }
 
     @Test
+    void countOccurrence_ShouldThrowException_WhenInputIsNull() {
+        // GIVEN
+        String input = null;
+        String keyword = "test";
+        when(textService.countOccurrence(input, keyword)).thenThrow(new IllegalArgumentException("Input cannot be null"));
+
+        // WHEN / THEN
+        assertThrows(IllegalArgumentException.class, () -> textController.countOccurrence(keyword, input));
+        verify(textService, times(1)).countOccurrence(input, keyword);
+    }
+
+    @Test
     void jsonToYaml_ShouldReturnYamlString() {
         // GIVEN
         String json = "{\"key\":\"value\"}";
@@ -185,6 +234,22 @@ class TextControllerGeneratedAiTests {
     }
 
     @Test
+    void jsonToYaml_ShouldReturnErrorMessage_WhenJsonIsInvalid() {
+        // GIVEN
+        String invalidJson = "{invalid json}";
+        String errorMessage = "Error converting JSON to YAML: Unexpected character";
+        when(textService.convertJsonToYaml(invalidJson)).thenReturn(errorMessage);
+
+        // WHEN
+        String result = textController.jsonToYaml(invalidJson);
+
+        // THEN
+        assertNotNull(result);
+        assertEquals(errorMessage, result);
+        verify(textService, times(1)).convertJsonToYaml(invalidJson);
+    }
+
+    @Test
     void jsonToXml_ShouldReturnXmlString() {
         // GIVEN
         String json = "{\"key\":\"value\"}";
@@ -198,5 +263,21 @@ class TextControllerGeneratedAiTests {
         assertNotNull(result);
         assertEquals(xml, result);
         verify(textService, times(1)).convertJsonToXml(json);
+    }
+
+    @Test
+    void jsonToXml_ShouldReturnErrorMessage_WhenJsonIsInvalid() {
+        // GIVEN
+        String invalidJson = "{invalid json}";
+        String errorMessage = "Error converting JSON to XML: Unexpected character";
+        when(textService.convertJsonToXml(invalidJson)).thenReturn(errorMessage);
+
+        // WHEN
+        String result = textController.jsonToXml(invalidJson);
+
+        // THEN
+        assertNotNull(result);
+        assertEquals(errorMessage, result);
+        verify(textService, times(1)).convertJsonToXml(invalidJson);
     }
 }

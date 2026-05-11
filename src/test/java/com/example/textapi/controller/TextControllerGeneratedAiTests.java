@@ -79,8 +79,8 @@ class TextControllerGeneratedAiTests {
         assertEquals(input.length(), stats.get("length"));
         assertEquals(5, stats.get("wordCount")); // "Hello", "world", "Hello", "again", "world"
         assertEquals(2, stats.get("lineCount"));
-        assertTrue((Integer)stats.get("VowelCount") > 0);
-        assertTrue((Integer)stats.get("ConsonantCount") > 0);
+        assertTrue((Integer) stats.get("VowelCount") > 0);
+        assertTrue((Integer) stats.get("ConsonantCount") > 0);
         List<String> repeatedWords = (List<String>) stats.get("RepeatedWords");
         assertTrue(repeatedWords.contains("hello : 2"));
         assertTrue(repeatedWords.contains("world : 2"));
